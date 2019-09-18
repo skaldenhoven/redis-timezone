@@ -1,7 +1,6 @@
 FROM redis
 MAINTAINER "Sander Kaldenhoven"
 
-RUN echo "Europe/Amsterdam" > /etc/timezone
-RUN dpkg-reconfigure -f noninteractive tzdata
+ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
 CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
